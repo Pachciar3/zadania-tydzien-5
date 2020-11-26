@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 
-import { Dialog, DialogTitle, DialogContent, DialogActions } from './components/Dialog';
-import Button from './components/Button';
-import './App.css';
+import { Dialog, DialogTitle, DialogContent, DialogActions } from '../components/Dialog';
+import Button from '../components/Button';
 
-function App() {
+function Excersise1() {
   const [showDialog, setShowDialog] = useState(false);
   const [showDialogWithConfirmation, setShowDialogWithConfirmation] = useState(false);
 
@@ -75,4 +74,4 @@ function App() {
   );
 }
 
-export default App;
+export default Excersise1;
