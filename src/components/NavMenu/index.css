@@ -1,0 +1,23 @@
+.main-navigation {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+  padding: 10px;
+}
+
+.main-navigation ul {
+  list-style: none;
+}
+
+.main-navigation li {
+  margin: 10px 0px;
+}
+.main-navigation li a.selected {
+  color: #f44336;
+}
+
+.main-navigation.slide {
+  left: 0;
+}
