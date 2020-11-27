@@ -7,7 +7,8 @@ import {
 } from "react-router-dom";
 
 import './App.css';
-import { Excersise1, Excersise2, Excersise3 } from './exercises';
+import { Excersise1, Excersise2, Excersise3, Excersise4 } from './exercises';
+import UserProfile from './components/Users/UserProfile';
 
 function App() {
 
@@ -17,13 +18,26 @@ function App() {
         <Excersise3 />
         <Switch>
           <Route path="/" exact>
-            <div> ^^ Click button ;-)</div>
-          </Route>
-          <Route path="/excersise-1">
             <Excersise1 />
           </Route>
           <Route path="/excersise-2">
             <Excersise2 />
+          </Route>
+          <Route path="/excersise-3">
+            <div>Look up ^^</div>
+          </Route>
+          <Route path="/users">
+            <Excersise4 />
+          </Route>
+          <Route path="/user/:id">
+            <div>
+              <UserProfile />
+            </div>
+          </Route>
+          <Route path="*">
+            <div>
+              Error 404
+            </div>
           </Route>
         </Switch>
       </Router>
