@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import UsersList from './UsersList';
 import User from './User';
 import UserSearch from './UserSearch';
+import {
+  Link
+} from "react-router-dom";
 
 function UsersContainer() {
   const [usersData, setUsersData] = useState([]);
@@ -26,6 +29,7 @@ function UsersContainer() {
 
     const usersDataAfterFilter = clonedUsersData.filter((el) => el.name.includes(searchBoxValue));
     setSearchData(usersDataAfterFilter);
+    setSearchBoxValue('');
   }
 
   function handleSearchBoxInputChange(e) {
@@ -37,7 +41,7 @@ function UsersContainer() {
       if (searchData.length <= 0) {
         return <div style={{ textAlign: "center" }}>No data sorry ;-(</div>;
       } else {
-        const users = searchData.map((el) => <User key={el.id} data={el} />);
+        const users = searchData.map((el) => <li className="user__item"><User key={el.id} data={el} /><Link to={`/user/${el.id}`} exact>View</Link></li>);
         return <UsersList>{users}</UsersList>;
       }
     } else {

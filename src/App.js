@@ -8,6 +8,7 @@ import {
 
 import './App.css';
 import { Excersise1, Excersise2, Excersise3, Excersise4 } from './exercises';
+import UserProfile from './components/Users/UserProfile';
 
 function App() {
 
@@ -30,7 +31,7 @@ function App() {
           </Route>
           <Route path="/user/:id">
             <div>
-              User
+              <UserProfile />
             </div>
           </Route>
           <Route path="*">

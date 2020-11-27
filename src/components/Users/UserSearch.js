@@ -6,9 +6,10 @@ function UserSearch({ searchValue, handleSubmit, handleReset, handleInputChange 
   return (
     <form className="search-box" onSubmit={handleSubmit}>
       <label className="search-box__field">
-        <div className="search-box__name">Search:</div>
+        <div className="search-box__name">Name:</div>
         <input value={searchValue} onChange={handleInputChange} type="text" />
       </label>
+      <Button type="submit">Search</Button>
       <Button type="button" handleClick={handleReset}>Reset</Button>
     </form>
   );

@@ -2,7 +2,7 @@ import React from 'react';
 
 function User({ data }) {
   return (
-    <li className="users__item">
+    <div className="user">
       <img src={data.picture} alt={data.name} />
       <h4>{data.name}</h4>
       <ul>
@@ -12,7 +12,7 @@ function User({ data }) {
         <li><span>Company: </span>{data.company}</li>
         <li><span>Email: </span>{data.email}</li>
       </ul>
-    </li>
+    </div>
   );
 }
 
