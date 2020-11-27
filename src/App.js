@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 
 import './App.css';
-import { Excersise1, Excersise2, Excersise3 } from './exercises';
+import { Excersise1, Excersise2, Excersise3, Excersise4 } from './exercises';
 
 function App() {
 
@@ -24,6 +24,9 @@ function App() {
           </Route>
           <Route path="/excersise-2">
             <Excersise2 />
+          </Route>
+          <Route path="/excersise-4">
+            <Excersise4 />
           </Route>
         </Switch>
       </Router>
