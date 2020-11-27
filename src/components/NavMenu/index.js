@@ -9,9 +9,10 @@ function NavMenu({ handleClose }) {
   return (
     <nav className="main-navigation">
       <ul>
-        <li><NavLink activeClassName="selected" onClick={handleClose} to="/excersise-1">Excersise 1</NavLink></li>
-        <li><NavLink activeClassName="selected" onClick={handleClose} to="/excersise-2">Excersise 2</NavLink></li>
-        <li><NavLink activeClassName="selected" onClick={handleClose} exact to="/">Excersise 3</NavLink></li>
+        <li><NavLink activeClassName="selected" onClick={handleClose} exact to="/">Excersise 1 - Modal</NavLink></li>
+        <li><NavLink activeClassName="selected" onClick={handleClose} to="/excersise-2">Excersise 2 - Snackbar</NavLink></li>
+        <li><NavLink activeClassName="selected" onClick={handleClose} to="/excersise-3">Excersise 3 - Menu</NavLink></li>
+        <li><NavLink activeClassName="selected" onClick={handleClose} to="/users">Excersise 4 - Users</NavLink></li>
       </ul>
     </nav>
   );

@@ -5,25 +5,54 @@ import UserSearch from './UserSearch';
 
 function UsersContainer() {
   const [usersData, setUsersData] = useState([]);
+  const [searchData, setSearchData] = useState([]);
+  const [isError, setisError] = useState(false);
+  const [searchBoxValue, setSearchBoxValue] = useState('');
 
   useEffect(() => {
     fetch('http://localhost:3000/users.json')
       .then(response => response.json())
-      .then(data => setUsersData(data));
+      .then(data => setUsersData(data))
+      .catch(error => setisError(error));
   }, []);
 
+  function handleSearchBoxReset() {
+    setSearchBoxValue('');
+  }
+
+  function handleSearchBoxSubmit(e) {
+    e.preventDefault();
+    const clonedUsersData = [...usersData];
+
+    const usersDataAfterFilter = clonedUsersData.filter((el) => el.name.includes(searchBoxValue));
+    setSearchData(usersDataAfterFilter);
+  }
+
+  function handleSearchBoxInputChange(e) {
+    setSearchBoxValue(e.target.value);
+  }
+
   function renderUsersList() {
-    if (usersData.length < 0) {
-      return <div>No data sorry ;-(</div>;
+    if (!isError) {
+      if (searchData.length <= 0) {
+        return <div style={{ textAlign: "center" }}>No data sorry ;-(</div>;
+      } else {
+        const users = searchData.map((el) => <User key={el.id} data={el} />);
+        return <UsersList>{users}</UsersList>;
+      }
     } else {
-      const users = usersData.map((el) => <User key={el.id} data={el} />);
-      return <UsersList>{users}</UsersList>;
+      return <div style={{ textAlign: "center" }}> Loading error</ div>;
     }
   }
 
   return (
     <div className="users">
-      <UserSearch />
+      <UserSearch
+        searchValue={searchBoxValue}
+        handleReset={handleSearchBoxReset}
+        handleSubmit={handleSearchBoxSubmit}
+        handleInputChange={handleSearchBoxInputChange}
+      />
       {renderUsersList()}
     </div>
   );

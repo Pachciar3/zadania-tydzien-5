@@ -17,16 +17,26 @@ function App() {
         <Excersise3 />
         <Switch>
           <Route path="/" exact>
-            <div> ^^ Click button ;-)</div>
-          </Route>
-          <Route path="/excersise-1">
             <Excersise1 />
           </Route>
           <Route path="/excersise-2">
             <Excersise2 />
           </Route>
-          <Route path="/excersise-4">
+          <Route path="/excersise-3">
+            <div>Look up ^^</div>
+          </Route>
+          <Route path="/users">
             <Excersise4 />
+          </Route>
+          <Route path="/user/:id">
+            <div>
+              User
+            </div>
+          </Route>
+          <Route path="*">
+            <div>
+              Error 404
+            </div>
           </Route>
         </Switch>
       </Router>

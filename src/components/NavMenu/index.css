@@ -3,7 +3,7 @@
   top: 0;
   bottom: 0;
   left: 0;
-  background-color: #fff;
+  background-color: #2b2a2a;
   padding: 10px;
 }
 
@@ -13,6 +13,10 @@
 
 .main-navigation li {
   margin: 10px 0px;
+}
+
+.main-navigation li a {
+  color: #fff;
 }
 .main-navigation li a.selected {
   color: #f44336;
