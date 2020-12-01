@@ -1,5 +1,6 @@
 .users__list {
   list-style: none;
+  text-align: center;
 }
 
 .users__item {

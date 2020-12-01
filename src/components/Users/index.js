@@ -1,7 +1,5 @@
-import User from './User';
 import UserContainer from './UserContainer';
-import UserSearch from './UserSearch';
-import UsersList from './UsersList';
+import UserProfile from './components/UserProfile';
 import './index.css';
 
-export { User, UserContainer, UserSearch, UsersList };
+export { UserContainer, UserProfile };

@@ -1,22 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import UsersList from './UsersList';
-import User from './User';
-import UserSearch from './UserSearch';
-import {
-  Link
-} from "react-router-dom";
+import UsersList from './components/UsersList';
+import UserSearch from './components/UserSearch';
+import Result from './components/Result';
 
 function UsersContainer() {
   const [usersData, setUsersData] = useState([]);
   const [searchData, setSearchData] = useState([]);
-  const [isError, setisError] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
   const [searchBoxValue, setSearchBoxValue] = useState('');
 
   useEffect(() => {
     fetch('http://localhost:3000/users.json')
       .then(response => response.json())
-      .then(data => setUsersData(data))
-      .catch(error => setisError(error));
+      .then(data => { setUsersData(data); setIsLoaded(true); })
+      .catch(error => setIsError(error));
   }, []);
 
   function handleSearchBoxReset() {
@@ -36,16 +34,14 @@ function UsersContainer() {
     setSearchBoxValue(e.target.value);
   }
 
-  function renderUsersList() {
-    if (!isError) {
-      if (searchData.length <= 0) {
-        return <div style={{ textAlign: "center" }}>No data sorry ;-(</div>;
-      } else {
-        const users = searchData.map((el) => <li className="user__item"><User key={el.id} data={el} /><Link to={`/user/${el.id}`} exact>View</Link></li>);
-        return <UsersList>{users}</UsersList>;
-      }
+  function showUsersList() {
+    if (isLoaded) {
+      return <UsersList searchData={searchData} />;
     } else {
-      return <div style={{ textAlign: "center" }}> Loading error</ div>;
+      if (isError) {
+        return <Result>Loading error</Result>;
+      }
+      return <Result>Loading...</Result>;
     }
   }
 
@@ -57,7 +53,7 @@ function UsersContainer() {
         handleSubmit={handleSearchBoxSubmit}
         handleInputChange={handleSearchBoxInputChange}
       />
-      {renderUsersList()}
+      {showUsersList()}
     </div>
   );
 }

@@ -12,7 +12,7 @@ function Excersise3() {
 
   return (
     <div style={{ marginBottom: 20 }}>
-      <Button type="button" handleClick={handleToggleMenu}>Toggle menu</Button>
+      <Button type="button" handleClick={handleToggleMenu}>Menu</Button>
       {showMenu && <NavMenu handleClose={handleToggleMenu} />}
     </div>
   );
